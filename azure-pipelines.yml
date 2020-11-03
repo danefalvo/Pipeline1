@@ -1,0 +1,68 @@
+trigger:
+- master
+
+variables:
+- name: BuildConfiguration
+  value: Development 
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'MyDotNetCoreAppGITExample.Development/*.csproj'
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: 'MyDotNetCoreAppGITExample.Development/*.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
+    zipAfterPublish: false
+
+- task: OctopusPack@4
+  inputs:
+    PackageId: 'MyDotNetCoreAppGITExample.Development'
+    PackageFormat: 'NuPkg'
+    PackageVersion: '$(Build.BuildNumber)'
+    SourcePath: '$(build.artifactstagingdirectory)/MyDotNetCoreAppGITExample.Development'
+    OutputPath: '$(build.stagingdirectory)'
+    NuGetTitle: 'MyDotNetCoreAppGITExample This will be the title of the package that Im making really really long'
+    NuGetDescription: 'Development of MyDotNetCoreAppGit The title of this package is MyDotNetCoreAppGITExample'
+    NuGetReleaseNotes: '$(Build.SourceVersionMessage)'
+    NuGetReleaseNotesFile: 'MyDotNetCoreAppGITExample.Development/NotesForComment.md'
+    Overwrite: true
+    ListFiles: true
+    AdditionalArguments: '--title=new title'
+
+        
+- task: OctopusMetadata@4
+  inputs:
+    OctoConnectedServiceName: 'Octopus DFCloud'
+    Space: 'Testing'
+    PackageId: '$(ImageName)'
+    #PackageId: 'MyDotNetCoreAppGITExample.Development'
+    PackageVersion: '$(Build.BuildNumber)'
+    Replace: 'false'
+
+
+- task: OctopusPush@4
+  inputs:
+    OctoConnectedServiceName: 'Octopus DFCloud'
+    Space: 'Spaces-1'
+    Package: '$(build.stagingdirectory)/*.nupkg'
+    Replace: 'true'
+
+
+
+- task: OctopusCreateRelease@4
+  inputs:
+    OctoConnectedServiceName: 'Octopus DFCloud'
+    Space: 'Spaces-1'
+    ProjectName: 'Projects-42'
+    ReleaseNumber: '$(Build.BuildNumber)'
+    Channel: 'Channels-42'
+    DeployToEnvironment: 'Environments-1'
