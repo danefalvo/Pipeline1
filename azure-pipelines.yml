@@ -20,21 +20,13 @@ variables:
 - name: OctoProject
   value: Pushed from Azure
 
+- name: system.debug
+  value: true
+
 pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'Get-ChildItem -Path ''D:\a\1\s'' -recurse'
-    errorActionPreference: 'silentlyContinue'
-
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'gci -rec -directory | select-object fullname'
-
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
   inputs:
@@ -65,7 +57,6 @@ steps:
     NuGetTitle: '$(PackageID)'
     NuGetDescription: 'Development of $(PackageID)'
     NuGetReleaseNotes: '$(Build.SourceVersionMessage)'
-    NuGetReleaseNotesFile: 'NotesForComment.md'
     Overwrite: true
     ListFiles: true
     AdditionalArguments: '--title=new title'
