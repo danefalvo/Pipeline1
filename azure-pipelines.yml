@@ -61,7 +61,7 @@ steps:
 - task: OctopusMetadata@4
   inputs:
     OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
-    Space: 'Testing'
+    Space: 'Default'
     PackageId: '$(ImageName)'
     PackageVersion: '$(Build.BuildNumber)'
     Replace: 'false'
@@ -70,7 +70,7 @@ steps:
 - task: OctopusPush@4
   inputs:
     OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
-    Space: 'Spaces-1'
+    Space: 'Default'
     Package: '$(build.stagingdirectory)/*.nupkg'
     Replace: 'true'
 
@@ -79,8 +79,6 @@ steps:
 - task: OctopusCreateRelease@4
   inputs:
     OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
-    Space: 'Spaces-1'
+    Space: 'Default'
     ProjectName: 'Pushed-from-azure'
     ReleaseNumber: '$(Build.BuildNumber)'
-    Channel: 'Channels-42'
-    DeployToEnvironment: 'Environments-1'
