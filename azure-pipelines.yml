@@ -41,10 +41,9 @@ steps:
         
 - task: OctopusMetadata@4
   inputs:
-    OctoConnectedServiceName: 'Octopus DFCloud'
+    OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
     Space: 'Testing'
     PackageId: '$(ImageName)'
-    #PackageId: 'MyDotNetCoreAppGITExample.Development'
     PackageVersion: '$(Build.BuildNumber)'
     Replace: 'false'
 
@@ -60,9 +59,9 @@ steps:
 
 - task: OctopusCreateRelease@4
   inputs:
-    OctoConnectedServiceName: 'Octopus DFCloud'
+    OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
     Space: 'Spaces-1'
-    ProjectName: 'Projects-42'
+    ProjectName: 'Pushed-from-azure'
     ReleaseNumber: '$(Build.BuildNumber)'
     Channel: 'Channels-42'
     DeployToEnvironment: 'Environments-1'
