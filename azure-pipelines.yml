@@ -6,7 +6,7 @@ variables:
   value: Development 
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
 - task: DotNetCoreCLI@2
