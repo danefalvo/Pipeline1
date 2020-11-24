@@ -3,7 +3,9 @@ trigger:
 
 variables:
 - name: BuildConfiguration
-  value: Development 
+  value: Development
+- name: PackageID
+  value: MyExampleProj.csproj
 
 pool:
   vmImage: 'windows-latest'
@@ -19,8 +21,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'gci -rec -directory | select-object fullname'
-    
-
 
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
@@ -49,8 +49,8 @@ steps:
     PackageVersion: '$(Build.BuildNumber)'
     SourcePath: '$(build.artifactstagingdirectory)'
     OutputPath: '$(build.stagingdirectory)'
-    NuGetTitle: '$(PackageID) This will be the title of the package that Im making really really long'
-    NuGetDescription: 'Development of $(PackageID) The title of this package is $(PackageID)'
+    NuGetTitle: '$(PackageID)'
+    NuGetDescription: 'Development of $(PackageID)'
     NuGetReleaseNotes: '$(Build.SourceVersionMessage)'
     NuGetReleaseNotesFile: 'NotesForComment.md'
     Overwrite: true
