@@ -5,7 +5,7 @@ variables:
 - name: BuildConfiguration
   value: Development
 - name: PackageID
-  value: MyExampleProj.csproj
+  value: MyExampleProj2.csproj
 
 pool:
   vmImage: 'windows-latest'
