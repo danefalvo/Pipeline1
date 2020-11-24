@@ -44,15 +44,15 @@ steps:
 
 - task: OctopusPack@4
   inputs:
-    PackageId: 'MyDotNetCoreAppGITExample.Development'
+    PackageId: 'MyExampleProj.csproj'
     PackageFormat: 'NuPkg'
     PackageVersion: '$(Build.BuildNumber)'
-    SourcePath: '$(build.artifactstagingdirectory)/MyDotNetCoreAppGITExample.Development'
+    SourcePath: '$(build.artifactstagingdirectory)/MyExampleProj.csproj'
     OutputPath: '$(build.stagingdirectory)'
     NuGetTitle: 'MyDotNetCoreAppGITExample This will be the title of the package that Im making really really long'
     NuGetDescription: 'Development of MyDotNetCoreAppGit The title of this package is MyDotNetCoreAppGITExample'
     NuGetReleaseNotes: '$(Build.SourceVersionMessage)'
-    NuGetReleaseNotesFile: 'MyDotNetCoreAppGITExample.Development/NotesForComment.md'
+    NuGetReleaseNotesFile: 'MyExampleProj.csproj/NotesForComment.md'
     Overwrite: true
     ListFiles: true
     AdditionalArguments: '--title=new title'
