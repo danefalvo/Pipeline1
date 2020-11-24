@@ -52,7 +52,7 @@ steps:
     NuGetTitle: 'MyDotNetCoreAppGITExample This will be the title of the package that Im making really really long'
     NuGetDescription: 'Development of MyDotNetCoreAppGit The title of this package is MyDotNetCoreAppGITExample'
     NuGetReleaseNotes: '$(Build.SourceVersionMessage)'
-    NuGetReleaseNotesFile: 'MyExampleProj.csproj/NotesForComment.md'
+    NuGetReleaseNotesFile: 'NotesForComment.md'
     Overwrite: true
     ListFiles: true
     AdditionalArguments: '--title=new title'
