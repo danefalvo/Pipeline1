@@ -9,7 +9,8 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
--powershell: Get-ChildItem -Path 'Insert root path' -recurse
+
+-task: 
 
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
