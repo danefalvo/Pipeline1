@@ -80,5 +80,5 @@ steps:
   inputs:
     OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
     Space: 'Default'
-    ProjectName: 'Pushed-from-azure'
+    ProjectName: 'Pushed from Azure'
     ReleaseNumber: '$(Build.BuildNumber)'
