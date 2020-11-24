@@ -32,25 +32,25 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'MyExampleProj.csproj'
+    projects: '$(PackageID)'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'MyExampleProj.csproj'
+    projects: '$(PackageID)'
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
     zipAfterPublish: false
 
 - task: OctopusPack@4
   inputs:
-    PackageId: 'MyExampleProj.csproj'
+    PackageId: '$(PackageID)'
     PackageFormat: 'NuPkg'
     PackageVersion: '$(Build.BuildNumber)'
     SourcePath: '$(build.artifactstagingdirectory)'
     OutputPath: '$(build.stagingdirectory)'
-    NuGetTitle: 'MyDotNetCoreAppGITExample This will be the title of the package that Im making really really long'
-    NuGetDescription: 'Development of MyDotNetCoreAppGit The title of this package is MyDotNetCoreAppGITExample'
+    NuGetTitle: '$(PackageID) This will be the title of the package that Im making really really long'
+    NuGetDescription: 'Development of $(PackageID) The title of this package is $(PackageID)'
     NuGetReleaseNotes: '$(Build.SourceVersionMessage)'
     NuGetReleaseNotesFile: 'NotesForComment.md'
     Overwrite: true
@@ -62,7 +62,7 @@ steps:
   inputs:
     OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
     Space: 'Default'
-    PackageId: '$(ImageName)'
+    PackageId: '$(PackageID)'
     PackageVersion: '$(Build.BuildNumber)'
     Replace: 'false'
 
