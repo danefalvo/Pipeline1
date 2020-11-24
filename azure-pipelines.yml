@@ -20,14 +20,13 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'MyDotNetCoreAppGITExample.Development/*.csproj'
-
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'MyDotNetCoreAppGITExample.Development/*.csproj'
+    projects: '**/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
     zipAfterPublish: false
 
