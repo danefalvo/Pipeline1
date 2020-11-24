@@ -50,7 +50,7 @@ steps:
 
 - task: OctopusPush@4
   inputs:
-    OctoConnectedServiceName: 'Octopus DFCloud'
+    OctoConnectedServiceName: 'danefalvo2.testoctopus.com'
     Space: 'Spaces-1'
     Package: '$(build.stagingdirectory)/*.nupkg'
     Replace: 'true'
