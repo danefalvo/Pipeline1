@@ -47,7 +47,7 @@ steps:
     PackageId: 'MyExampleProj.csproj'
     PackageFormat: 'NuPkg'
     PackageVersion: '$(Build.BuildNumber)'
-    SourcePath: '$(build.artifactstagingdirectory)/MyExampleProj.csproj'
+    SourcePath: '$(build.artifactstagingdirectory)'
     OutputPath: '$(build.stagingdirectory)'
     NuGetTitle: 'MyDotNetCoreAppGITExample This will be the title of the package that Im making really really long'
     NuGetDescription: 'Development of MyDotNetCoreAppGit The title of this package is MyDotNetCoreAppGITExample'
