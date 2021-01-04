@@ -9,13 +9,10 @@ variables:
   value: MyExampleProj.csproj
 
 - name: ConnectedSvcName
-  value: danefalvo2.testoctopus.com
+  value: danefalvo octopus app
 
 - name: OctoSpace
   value: Default
-
-- name: ConnectedSvcName
-  value: danefalvo2.testoctopus.com
 
 - name: OctoProject
   value: Pushed from Azure
