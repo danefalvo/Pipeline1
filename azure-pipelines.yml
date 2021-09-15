@@ -15,7 +15,7 @@ variables:
   value: Default
 
 - name: OctoProject
-  value: Pushed from Azure
+  value: Azure Pipeline
 
 - name: system.debug
   value: true
