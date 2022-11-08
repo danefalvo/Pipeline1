@@ -25,7 +25,7 @@ pool:
 
 steps:
 
-- task: OctoInstaller@5
+- task: OctoInstaller@4
   inputs:
     version: '*'
     
