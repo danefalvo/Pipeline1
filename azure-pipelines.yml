@@ -25,10 +25,12 @@ pool:
 
 steps:
 
-- task: OctoInstaller@4
-  inputs:
-    version: '*'
-    
+
+
+    - task: OctoInstaller@5
+      inputs:
+        version: '*'
+        
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
   inputs:
