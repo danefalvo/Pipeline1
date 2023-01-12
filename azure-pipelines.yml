@@ -24,13 +24,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: OctoInstaller@5
+  inputs:
+    version: '*'
 
 
 
-    - task: OctoInstaller@5
-      inputs:
-        version: '*'
-        
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
   inputs:
