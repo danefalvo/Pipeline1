@@ -89,3 +89,14 @@ steps:
     Space: '$(OctoSpace)'
     ProjectName: '$(OctoProject)'
     ReleaseNumber: '$(Build.BuildNumber)'
+
+
+- task: OctopusDeployRelease@5
+  inputs:
+    OctoConnectedServiceName: 'danefalvo octopus app'
+    Space: 'Spaces-42'
+    ProjectGroup: 'ProjectGroups-62'
+    Project: 'Projects-966'
+    ReleaseNumber: 'latest'
+    Environments: 'Environments-83'
+    ShowProgress: true
