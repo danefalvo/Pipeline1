@@ -65,13 +65,13 @@ steps:
     AdditionalArguments: '--title=new title'
 
         
-- task: OctopusMetadata@4
-  inputs:
-    OctoConnectedServiceName: '$(ConnectedSvcName)'
-    Space: '$(OctoSpace)'
-    PackageId: '$(PackageID)'
-    PackageVersion: '$(Build.BuildNumber)'
-    Replace: 'false'
+#- task: OctopusMetadata@4
+#  inputs:
+#    OctoConnectedServiceName: '$(ConnectedSvcName)'
+#    Space: '$(OctoSpace)'
+#    PackageId: '$(PackageID)'
+#    PackageVersion: '$(Build.BuildNumber)'
+#    Replace: 'false'
 
 
 - task: OctopusPush@4
